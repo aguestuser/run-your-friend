@@ -7,11 +7,13 @@ import landingPageText from './text/landing-page.md';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Run your friend for office!</h1>
+      <div id="app-container">
+        <header className="header">
+          <h1 className="title">Run your friend for office!</h1>
         </header>
-        <ReactMarkdown source={landingPageText} />
+        <div className="contents-container">
+          <ReactMarkdown source={landingPageText} />
+        </div>
       </div>
     );
   }
