@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.intro-container p {
+    padding: 0 1em 0 1em;
+}
+
+.runner-container {
+    display: flex;
+    flexDirection: row;
+    height: 10em;
+}
+
+.runner {
+    display: flex;
+}

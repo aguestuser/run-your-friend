@@ -2,12 +2,20 @@
     text-align: left;
 }
 
-.header {
+h1, h2 {
     background-color: black;
     text-align: center;
     color: white;
     padding-top: 1em;
     padding-bottom: 1em;
+}
+
+.header {
+    /* background-color: black; */
+    /* text-align: center; */
+    /* color: white; */
+    /* padding-top: 1em; */
+    /* padding-bottom: 1em; */
 }
 
 .contents-container {
