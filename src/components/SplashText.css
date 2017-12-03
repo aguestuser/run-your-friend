@@ -6,7 +6,7 @@ p {
 h1, h2 {
     background-color: black;
     text-align: center;
-    color: white;
+    color: white; /* #E040FB; */
     padding-top: 1em;
     padding-bottom: 1em;
 }

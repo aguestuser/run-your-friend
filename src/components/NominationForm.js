@@ -4,8 +4,9 @@ import {TextField} from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
 import RunnerIcon from './RunnerIcon';
-import {grey500 as grey, black500 as black} from 'material-ui/styles/colors';
-import {isRequired, isEmail} from '../validations';
+import {grey500 as grey, black500 as black, purpleA200 as purple} from 'material-ui/styles/colors';
+import {isRequired, isEmail} from '../services/validations';
+import {parseNominationPayload} from '../services/parsers';
 
 let NominationForm = ({ handleSubmit, pristine, submitting }) => {
   const disabled = pristine || submitting;
@@ -13,13 +14,17 @@ let NominationForm = ({ handleSubmit, pristine, submitting }) => {
 
     <div style={styles.formContainer}>
 
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={
+      handleSubmit(values => {
+        console.log(parseNominationPayload(values))
+      })
+    }>
 
         <div style={styles.fieldsContainer}>
 
           <div style={styles.fields}>
             <div style={styles.fieldsLabel}>Nominee</div>
-            <div>
+            <div style={styles.firstRowFields}>
               <TextFieldOf {...{name: 'nomineeName',
                                 placeholder: "Your friend's name",
                                 validations: [isRequired]}}/>
@@ -35,7 +40,7 @@ let NominationForm = ({ handleSubmit, pristine, submitting }) => {
   
           <div style={styles.fields}>
             <div style={styles.fieldsLabel}>Nominator</div>
-            <div>
+            <div style={styles.firstRowFields}>
               <TextFieldOf {...{name: 'nominatorName',
                                 placeholder: "Your name",
                                 validations: [isRequired]}}/>
@@ -53,7 +58,8 @@ let NominationForm = ({ handleSubmit, pristine, submitting }) => {
         <div style={styles.submitContainer}>
           <FlatButton {...{ label: 'Run!',
                             type: 'submit',
-                            icon: <RunnerIcon {...{color: disabled ? grey : black }}/>,
+                            style: { color: buttonColorOf(disabled) },
+                            icon: <RunnerIcon {...{color: buttonColorOf(disabled) }}/>,
                             disabled }} />
         </div>
 
@@ -63,7 +69,18 @@ let NominationForm = ({ handleSubmit, pristine, submitting }) => {
   )
 }
 
+const buttonColorOf = disabled => disabled ? grey: purple;
+
 const margin = 1
+const highlightColor = purple;
+const highlightStyles = {
+  hintStyle: { color: grey },
+  errorStyle: { color: highlightColor },
+  underlineStyle: { borderColor: highlightColor },
+  underlineFocusStyle: { borderColor: highlightColor },
+  floatingLabelStyle: { color: grey },
+  floatingLabelFocusStyle: { color: highlightColor},
+};
 
 const styles = {
   formContainer: {
@@ -79,16 +96,14 @@ const styles = {
     display: 'flex',
     alignSelf: 'center',
     fontWeight: 'bold',
-    /* width: '100%',
-     * height: '100%',
-     * backgroundColor: grey,
-     * color: 'white',
-     * textAlign: 'center',
-     * verticalAlign: 'center',*/
   },
   fields: {
     display: 'flex',
     flexDirection: 'column',
+  },
+  firstRowFields: {
+    display: 'flex',
+    alignContents: 'flex-start'
   },
   field: {
     margin: `${margin}rem`,
@@ -106,6 +121,7 @@ const styles = {
 
 const TextFieldOf = ({ name, placeholder, validations }) =>
    <Field {...{
+     ...highlightStyles,
      name,
      component: TextField,
      hintText: placeholder,
@@ -116,6 +132,7 @@ const TextFieldOf = ({ name, placeholder, validations }) =>
 
 const LongTextFieldOf = ({ name, placeholder, validations }) =>
    <Field {...{
+     ...highlightStyles,
      name,
      component: TextField,
      hintText: placeholder,

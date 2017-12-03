@@ -7,7 +7,7 @@ const SplashPage = () =>
   <div>
     <Runners/>
     <SplashText/>
-    <NominationForm onSubmit={console.log}/>
+    <NominationForm/>
     <Runners/>
   </div>;
 
