@@ -11,6 +11,7 @@ type NominationSubmission = {
 };
 
 type Person = {
+  id:          string,
   name:        string,
   email:       string,
   description: string,
@@ -23,13 +24,15 @@ type NominationPayload = {
 */
 
 // NominationSubmission -> NominationPayload
-export const parseNominationPayload = submission => ({
+export const parseNominationPayload = (submission, generateId) => ({
   nominee: {
+    id:          generateId(),
     name:        submission.nomineeName,
     email:       submission.nomineeEmail,
     description: submission.nomineeDescription,
   },
   nominator: {
+    id:          generateId(),
     name:        submission.nominatorName,
     email:       submission.nominatorEmail,
     description: submission.nominatorDescription,

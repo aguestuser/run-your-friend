@@ -4,8 +4,9 @@ import {TextField} from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
 import RunnerIcon from './RunnerIcon';
-import {grey500 as grey, black500 as black, purpleA200 as purple} from 'material-ui/styles/colors';
+import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
 import {isRequired, isEmail} from '../services/validations';
+import {generateId} from '../services/generators';
 import {parseNominationPayload} from '../services/parsers';
 
 let NominationForm = ({ handleSubmit, pristine, submitting }) => {
@@ -16,7 +17,7 @@ let NominationForm = ({ handleSubmit, pristine, submitting }) => {
 
     <form onSubmit={
       handleSubmit(values => {
-        console.log(parseNominationPayload(values))
+        console.log(parseNominationPayload(values, generateId))
       })
     }>
 
