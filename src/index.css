@@ -4,39 +4,7 @@ body {
   font-family: roboto,sans-serif;
 }
 
-.intro-container p {
-    padding: 0 1em 0 1em;
-    text-align: center;
-}
-
 a {
     color: fuchsia;
     text-decoration: none;
-}
-
-.runner-container {
-    display: flex;
-    flexDirection: row;
-    height: 10em;
-}
-
-.runner {
-    display: flex;
-    width: 20em;
-}
-
-#app-container {
-    text-align: left;
-}
-
-h1, h2 {
-    background-color: black;
-    text-align: center;
-    color: white;
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-.contents-container {
-    padding: 1em;
 }

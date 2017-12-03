@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
-import AppBar from 'material-ui/AppBar';
 import {connect} from 'react-redux';
 import RunnerIcon from './RunnerIcon';
 import {grey500 as grey, black500 as black} from 'material-ui/styles/colors';
