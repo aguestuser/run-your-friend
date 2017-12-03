@@ -15,11 +15,11 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
-    height: '10em',
+    height: '8em',
   },
   runner: {
     display: 'flex',
-    width: '20em',
+    width: '16em',
   },
 }
 
