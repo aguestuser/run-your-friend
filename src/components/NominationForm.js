@@ -91,6 +91,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    flexWrap: 'wrap',
   },
   fieldsLabel: {
     display: 'flex',
@@ -103,7 +104,8 @@ const styles = {
   },
   firstRowFields: {
     display: 'flex',
-    alignContents: 'flex-start'
+    alignContents: 'flex-start',
+    flexWrap: 'wrap',
   },
   field: {
     margin: `${margin}rem`,
