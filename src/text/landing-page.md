@@ -4,6 +4,6 @@ You're not alone! [Fed up](http://news.gallup.com/poll/1600/congress-public.aspx
 
 ## Got a friend you trust?
 
-**Nominate them** to run for office and **recruit their campaign team** using the form below. If your friend receives more than **1,000 pledges** of support, they will receive an email with a **contact list** of everyone who pledged to bootstrap their campaign.
+**Nominate them** to run for office and **recruit their campaign team**. If your friend receives more than **1,000 pledges** of support, they will receive an email with a **contact list** of everyone who pledged to help.
 
 ## Run your friend for office!
