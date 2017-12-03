@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import introText from '../text/landing-page.md';
+import introText from '../text/splash-text.md';
 import './SplashText.css';
 
 const SplashText = () => 
