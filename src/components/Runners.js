@@ -16,6 +16,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     height: `${height}em`,
+    zIndex: -1,
   }),
   runner: height => ({
     display: 'flex',

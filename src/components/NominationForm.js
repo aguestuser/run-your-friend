@@ -159,7 +159,6 @@ const LongTextFieldOf = ({ name, placeholder, validations }) =>
     floatingLabelText: placeholder,
     validate: validations || [],
     multiLine: true,
-    rows: 2,
     style: {...styles.field, ...styles.wideField }
   }}/>
 
