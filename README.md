@@ -12,9 +12,23 @@ Other than that, it's just your run of the mill single page app with a bit lower
 
 If anyone is interested in expanding it to actually deploy and use, hit me up!
 
-If you are interested in running and editing it, see below!
+If you are interested in running and editing it, see the `Hacking` section below!
 
-- @aguestuser
+
+## Next Steps
+
+In keeping with the assignment that generated it, this is a working prototype, intended to show to collaborators to see if the idea has traction before proceeding further. All state is stored in the browser, which means that users could not actually (1) share a link with friends, (2) accumulate supporters for a given nominee, or (3) hope to have emails sent to anyone.
+
+If collaborators liked this idea, to move toward an MVP, I would:
+
+* Add a supporters form to the nominee homepage (so that once someone is nominated, others may sign up to support them)
+* Add a thin Rails backend that responds with JSON to queries from the browser
+* Add social media sharing buttons to the nominee page
+* Add functionality to send an email to the nominee once a threshold is reached
+* Add the ability to change the threshold of supporters for "nomination" to kick in (a la Kickstarter)
+* Add ability nominate people for various offices
+* Add pictures and profile pages for nominees (or something to make reading about them a bit more personable and visually appealing)
+* Or... (do you have ideas?)
 
 ## Hacking
 
