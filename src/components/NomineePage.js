@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getNominee} from '../redux/reducers/nominees';
+import {getNominee, getNominator} from '../redux/reducers/nominees';
 import runner from '../img/running-person.gif';
 import Runners from './Runners';
 import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
@@ -128,9 +128,16 @@ const styles = {
   }
 };
 
+// for designing!!
+const defaultNominee = { name: 'foo', description: 'is a good listener'};
+const defaultNominator = { name: 'bar', description: 'gonna phonebank'};
+
+// TODO: we really should access this page by nomination id
+// (would allow for more performant selectors)
+
 const mapStateToProps = (state, ownProps) => ({
-  nominee: getNominee(state, ownProps.match.params.id) || { name: 'foo', description: 'gonna be good'},
-  nominator: { name: 'Austin', description: 'will run phonebank'},
+  nominee: getNominee(state, ownProps.match.params.id) || defaultNominee,
+  nominator: getNominator(state, ownProps.match.params.id) || defaultNominator,
 });
 
 export default connect(mapStateToProps, {})(NomineePage);

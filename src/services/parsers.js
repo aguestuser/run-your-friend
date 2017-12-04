@@ -1,3 +1,4 @@
+import {times} from 'lodash';
 
 /**TYPES
 
@@ -24,17 +25,25 @@ type NominationPayload = {
 */
 
 // NominationSubmission -> NominationPayload
-export const parseNominationPayload = (submission, generateId) => ({
-  nominee: {
-    id:          generateId(),
-    name:        submission.nomineeName,
-    email:       submission.nomineeEmail,
-    description: submission.nomineeDescription,
-  },
-  nominator: {
-    id:          generateId(),
-    name:        submission.nominatorName,
-    email:       submission.nominatorEmail,
-    description: submission.nominatorDescription,
-  },
-});
+export const parseNominationPayload = (submission, generateId) => {
+  const ids = times(3, generateId);
+  return {
+    nominee: {
+      id:          ids[0],
+      name:        submission.nomineeName,
+      email:       submission.nomineeEmail,
+      description: submission.nomineeDescription,
+    },
+    nominator: {
+      id:          ids[1],
+      name:        submission.nominatorName,
+      email:       submission.nominatorEmail,
+      description: submission.nominatorDescription,
+    },
+    nomination: {
+      id:          ids[2],
+      nomineeId:   ids[0],
+      nominatorId: ids[1],
+    }
+  };
+};

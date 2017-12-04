@@ -5,9 +5,10 @@ describe('root reducer', () => {
 
   it('defaults to empty state tree', () => {
     expect(reducer()).to.eql({
-      form:       {},
-      nominees:   {},
-      nominators: {},
+      form:        {},
+      nominees:    {},
+      nominators:  {},
+      nominations: {},
     });
   });
 });

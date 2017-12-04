@@ -27,6 +27,11 @@ describe('parsers module', () => {
         email:       "bar@riseup.net",
         description: "I would phonebank and help set up the campaign CMS.",
       },
+      nomination: {
+        id: "fakeId2",
+        nomineeId: "fakeId0",
+        nominatorId: "fakeId1",
+      }
     });
   });
 });

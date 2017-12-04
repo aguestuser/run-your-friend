@@ -10,6 +10,7 @@ import {generateId} from '../services/generators';
 import {parseNominationPayload} from '../services/parsers';
 import {createNominee} from '../redux/actions/nominees';
 import {createNominator} from '../redux/actions/nominators';
+import {createNomination} from '../redux/actions/nominations';
 import {withRouter} from 'react-router-dom';
 
 let NominationForm = ({
@@ -18,6 +19,7 @@ let NominationForm = ({
   submitting,
   createNominee,
   createNominator,
+  createNomination,
   history
 }) => {
 
@@ -27,9 +29,10 @@ let NominationForm = ({
 
     <form onSubmit={
       handleSubmit(values => {
-        const {nominee, nominator} = (parseNominationPayload(values, generateId));
+        const {nominee, nominator, nomination} = (parseNominationPayload(values, generateId));
         createNominee(nominee);
         createNominator(nominator);
+        createNomination(nomination);
         history.push(`/nominees/${nominee.id}`);
       })
     }>
@@ -162,7 +165,7 @@ const LongTextFieldOf = ({ name, placeholder, validations }) =>
 
 
 const mapStateToProps = state => ({});
-const actions = {createNominee, createNominator};
+const actions = {createNominee, createNominator, createNomination};
 
 export default withRouter(
   connect(mapStateToProps, actions)(
