@@ -10,4 +10,6 @@ const nominees = (state = {}, action = {}) => {
   }
 };
 
+export const getNominee = (state, id) => state.nominees[id];
+
 export default nominees;

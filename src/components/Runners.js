@@ -2,25 +2,25 @@ import React from 'react';
 import runner from '../img/running-person.gif';
 import {times} from 'lodash';
 
-const Runners = () =>
-  <div style={styles.container}>
-    {times(10, n =>
-      <img style={styles.runner}
+const Runners = ({number, height}) =>
+  <div style={styles.container(height)}>
+    {times(number, n =>
+      <img style={styles.runner(height)}
            src={runner}
            key={n}
-           alt='running stick figure' />)}
+           alt='running person' />)}
   </div>
 
 const styles = {
-  container: {
+  container: height => ({
     display: 'flex',
     flexDirection: 'row',
-    height: '8em',
-  },
-  runner: {
+    height: `${height}em`,
+  }),
+  runner: height => ({
     display: 'flex',
-    width: '16em',
-  },
+    height: `${height}em`,
+  }),
 }
 
 export default Runners;
