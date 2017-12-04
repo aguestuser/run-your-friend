@@ -13,6 +13,7 @@ const style = {
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
+  padding: '.5em 0 .5em 0'
 };
 
 export default GithubLink;
