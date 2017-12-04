@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';

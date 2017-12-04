@@ -1,19 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getNominee, getNominator} from '../redux/reducers/nominees';
-import runner from '../img/running-person.gif';
 import Runners from './Runners';
-import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
+import GithubLink from './GithubLink';
+import {purpleA200 as purple} from 'material-ui/styles/colors';
 import willSmith from '../img/running-will-smith.gif';
 
 const NBSP = '\u00a0'
-const runners = () => <Runners {...{number: 1, height: 4 }}/>
+const runner = () => <Runners {...{number: 1, height: 4 }}/>
 
 let NomineePage = ({nominee, nominator}) =>
   <div style={styles.container}>
 
     <div style={styles.header}>
-      {runners()}
+      {runner()}
       <div style={styles.headerText}>
         <span style={styles.name}>{nominator.name}</span>
         {NBSP}thinks{NBSP}
@@ -22,21 +22,21 @@ let NomineePage = ({nominee, nominator}) =>
     </div>
 
     <div style={styles.descriptionContainer}>
-      {runners()}
+      {runner()}
       <div style={styles.nomineeDescription}>
         {nominee.description}
       </div>
     </div>
 
     <div style={styles.supportersHeader}>
-      {runners()}
+      {runner()}
       <div style={styles.supportersHeaderText}>
         <span style={styles.name}>{nominee.name}</span>{NBSP}is suported by:{NBSP}
       </div>
     </div>
 
     <div style={styles.supportersContainer}>
-      {runners()}
+      {runner()}
       <div style={styles.supportersList}>
         <ul>
           <li>
@@ -47,20 +47,21 @@ let NomineePage = ({nominee, nominator}) =>
     </div>
 
     <div style={styles.supporterFormHeader}>
-      {runners()}
+      {runner()}
       <div style={styles.supporterFormHeaderText}>
         Will{NBSP}<span style={styles.name}>you</span>{NBSP}add your support?
       </div>
     </div>
 
     <div style={styles.supporterFormContainer}>
-      {runners()}
+      {runner()}
       <div style={styles.supporterForm}>
         <p>Imagine there is a form here! Instead... have a GIF!</p>
         <img src={willSmith} width='100%'/>
+        <GithubLink/>
       </div>
     </div>
-
+    
   </div>;
         
 
