@@ -1,55 +1,70 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getNominee, getNominator} from '../redux/reducers/nominees';
+import {getNominee, getNominator, getBackers} from '../redux/reducers/nominees';
+import SupporterForm from './SupporterForm';
 import Runners from './Runners';
 import GithubLink from './GithubLink';
 import {pink} from '../constants/colors';
+import {isEmpty} from 'lodash';
+import {generateId} from '../services/generators';
 
 const NBSP = '\u00a0';
 const runner = () => <Runners {...{number: 1, height: 4 }}/>
 
-let NomineePage = ({nominee, nominator}) =>
-  <div style={styles.container}>
+/* <li>
+ *   <span style={styles.name}>{nominator.name}</span>{NBSP}({nominator.description}){NBSP}
+ * </li>*/
 
-    <div style={styles.header}>
-      <div style={styles.headerText}>
-        <span style={styles.name}>{nominator.name}</span>
+
+let NomineePage = ({nominee, nominator, backers}) =>
+  <div style={container}>
+
+    <div style={row}>
+      <div style={blackRowContents}>
+        <span style={name}>{nominator.name}</span>
         {NBSP}thinks{NBSP}
-        <span style={styles.name}>{nominee.name }</span> {NBSP}should run because:
+        <span style={name}>{nominee.name }</span> {NBSP}should run because:
       </div>
     </div>
 
-    <div style={styles.descriptionContainer}>
-      <div style={styles.nomineeDescription}>
+    <div style={row}>
+      <div style={whiteRowContents}>
         {nominee.description}
       </div>
     </div>
 
-    <div style={styles.supportersHeader}>
-      <div style={styles.supportersHeaderText}>
-        <span style={styles.name}>{nominee.name}</span>{NBSP}is suported by:{NBSP}
+    <div style={row}>
+      <div style={blackRowContents}>
+        <span style={name}>{nominee.name}</span>{NBSP}is suported by:{NBSP}
       </div>
     </div>
 
-    <div style={styles.supportersContainer}>
-      <div style={styles.supportersList}>
+    <div style={row}>
+      <div style={whiteRowContents}>
         <ul>
-          <li>
-            <span style={styles.name}>{nominator.name}</span>{NBSP}({nominator.description}){NBSP}
-          </li>
+          {backers.map(backer =>
+            <li>
+              <span style={name}>{backer.name}</span>{NBSP}({backer.description}){NBSP}
+            </li>
+          )}
         </ul>
       </div>
     </div>
 
-    <div style={styles.supporterFormHeader}>
-      <div style={styles.supporterFormHeaderText}>
-        Will{NBSP}<span style={styles.name}>you</span>{NBSP}add your support?
+    <div style={row}>
+      <div style={blackRowContents}>
+        Will{NBSP}<span style={name}>you</span>{NBSP}add your support?
       </div>
     </div>
 
-    <div style={styles.supporterFormContainer}>
-      <div style={styles.supporterForm}>
-        <p>Imagine there is a form here!</p>
+    <div style={row}>
+      <div style={whiteRowContents}>
+        <SupporterForm{...{ nominee } }/>
+      </div>
+    </div>
+
+    <div style={bottomRow}>
+      <div style={{...blackRowContents, fontWeight: 'normal'}}>
         <GithubLink/>
       </div>
     </div>
@@ -63,6 +78,12 @@ let NomineePage = ({nominee, nominator}) =>
 const row = {
   display: 'flex',
   flexDirection: 'row',
+}
+
+const bottomRow = {
+  position: 'absolute',
+  bottom: 0,
+  width: '100%',
 }
 
 const rowContents = {
@@ -92,51 +113,31 @@ const whiteRowContents = {
   fontSize: '.8em',
 }
 
-const styles = {
-  name: {
-    color: pink,
-    fontWeight: 'bold',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'wrap',
-  },
-
-  header: row,
-  headerText: blackRowContents,
-
-  descriptionContainer: row,
-  nomineeDescription: whiteRowContents,
-
-  supportersHeader: row,
-  supportersHeaderText: blackRowContents,
-
-  supportersContainer: row,
-  supportersList: whiteRowContents,
-
-  supporterFormHeader: row,
-  supporterFormHeaderText: blackRowContents,
-
-  supporterFormContainer: row,
-  supporterForm: whiteRowContents,
-  /* {
-   *   ...whiteRowContents,
-   *   flexDirection: 'column',
-   *   alignItems: 'center',
-   * }*/
+const name = {
+  color: pink,
+  fontWeight: 'bold',
 };
 
-// for designing!!
-const defaultNominee = { name: 'foo', description: 'is a good listener'};
-const defaultNominator = { name: 'bar', description: 'gonna phonebank'};
+const container= {
+  display: 'flex',
+  flexDirection: 'column',
+  flexWrap: 'wrap',
+};
 
-// TODO: we really should access this page by nomination id
-// (would allow for more performant selectors)
+/* EXPORT */
 
 const mapStateToProps = (state, ownProps) => ({
   nominee: getNominee(state, ownProps.match.params.id) || defaultNominee,
   nominator: getNominator(state, ownProps.match.params.id) || defaultNominator,
+  backers: (() => {
+    const backers = getBackers(state, ownProps.match.params.id)
+    return isEmpty(backers) ? getDefaultBackers(state) : backers
+  })(),
 });
 
 export default connect(mapStateToProps, {})(NomineePage);
+
+// for designing and demoing (for now)
+const defaultNominee = { id: generateId(), name: 'Fake Nominee', description: 'is a good listener'};
+const defaultNominator = { id: generateId(), name: 'Fake Nominator', description: 'gonna phonebank'};
+const getDefaultBackers = state => getBackers(state, defaultNominee.id);

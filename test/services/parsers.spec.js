@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {parseNominationPayload} from '../../src/services/parsers';
+import {parseNominationPayload, parseSupporterPayload} from '../../src/services/parsers';
 import {generateFakeId} from '../support/fakes';
 
 describe('parsers module', () => {
@@ -32,6 +32,22 @@ describe('parsers module', () => {
         nomineeId: "fakeId0",
         nominatorId: "fakeId1",
       }
+    });
+  });
+
+  it('parses supporter payload from form submission', () => {
+
+    const formInput = {
+      name:        'Baz',
+      email:       'baz@riseup.net',
+      description: 'I would do doorknocking and canvassing work.'
+    };
+
+    expect(parseSupporterPayload(formInput, generateFakeId)).to.eql({
+      id:          'fakeId3',
+      name:        'Baz',
+      email:       'baz@riseup.net',
+      description: 'I would do doorknocking and canvassing work.'
     });
   });
 });

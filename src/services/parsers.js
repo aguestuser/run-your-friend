@@ -47,3 +47,6 @@ export const parseNominationPayload = (submission, generateId) => {
     }
   };
 };
+
+export const parseSupporterPayload = (submission, generateId) =>
+  Object.assign({}, submission, { id: generateId() });

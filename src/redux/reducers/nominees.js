@@ -32,9 +32,9 @@ export const getSupporters = (state, nomineeId) =>
   );
 
 export const getBackers = (state, nomineeId) =>
-  [
+  compact([
     getNominator(state, nomineeId),
     ...getSupporters(state, nomineeId)
-  ]
+  ])
 
 export default nominees;

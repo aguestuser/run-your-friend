@@ -11,6 +11,7 @@ import {createNominee} from '../redux/actions/nominees';
 import {createNominator} from '../redux/actions/nominators';
 import {createNomination} from '../redux/actions/nominations';
 import {withRouter} from 'react-router-dom';
+import {formContainer, fieldsContainer, submitContainer} from '../styles/form';
 
 /* COMPONENT */
 
@@ -26,7 +27,7 @@ let NominationForm = ({
 
   const disabled = pristine || submitting;
   return (
-    <div style={styles.formContainer}>
+    <div style={formContainer}>
 
       <form onSubmit={
         handleSubmit(values => {
@@ -38,20 +39,22 @@ let NominationForm = ({
         })
       }>
 
-        <div style={styles.fieldsContainer}>
+        <div style={fieldsContainer}>
            <PersonFields{...{
+             title:       "Nominee",
              name:        { name: "nomineeName",        placeholder: "Your friend's name" },
              email:       { name: "nomineeEmail",       placeholder: "Your friend's email" },
              description: { name: "nomineeDescription", placeholder: "Why your friend should run" }
            }}/>
            <PersonFields{...{
+             title:       "Nominator",
              name:        { name: "nominatorName",        placeholder: "Your name" },
              email:       { name: "nominatorEmail",       placeholder: "Your email" },
              description: { name: "nominatorDescription", placeholder: "How you would help your frien run" }
            }}/>
         </div>
 
-        <div style={styles.submitContainer}>
+        <div style={submitContainer}>
           <FlatButton {...{ label: 'Run!',
                             type: 'submit',
                             style: { color: buttonColorOf(disabled) },
@@ -63,26 +66,6 @@ let NominationForm = ({
 
     </div>
   )
-}
-
-/* STYLES */
-
-const styles = {
-  formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  fieldsContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-  },
-  submitContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-  }
 }
 
 /* EXPORT */

@@ -6,9 +6,11 @@ import {grey, pink} from '../constants/colors';
 
 /* COMPONENTS */
 
-const PersonFields = ({name, email, description}) =>
+const PersonFields = ({title, name, email, description}) =>
   <div style={styles.fields}>
-    <div style={styles.fieldsLabel}>Nominee</div>
+    <div style={styles.fieldsLabel}>
+     {title}
+    </div>
     <div style={styles.firstRowFields}>
       <TextFieldOf {...{ name: name.name,
                          placeholder: name.placeholder,
