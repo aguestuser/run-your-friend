@@ -3,17 +3,15 @@ import {connect} from 'react-redux';
 import {getNominee, getNominator} from '../redux/reducers/nominees';
 import Runners from './Runners';
 import GithubLink from './GithubLink';
-import {purpleA200 as purple} from 'material-ui/styles/colors';
-import willSmith from '../img/running-will-smith.gif';
+import {pink} from '../constants/colors';
 
-const NBSP = '\u00a0'
+const NBSP = '\u00a0';
 const runner = () => <Runners {...{number: 1, height: 4 }}/>
 
 let NomineePage = ({nominee, nominator}) =>
   <div style={styles.container}>
 
     <div style={styles.header}>
-      {runner()}
       <div style={styles.headerText}>
         <span style={styles.name}>{nominator.name}</span>
         {NBSP}thinks{NBSP}
@@ -22,21 +20,18 @@ let NomineePage = ({nominee, nominator}) =>
     </div>
 
     <div style={styles.descriptionContainer}>
-      {runner()}
       <div style={styles.nomineeDescription}>
         {nominee.description}
       </div>
     </div>
 
     <div style={styles.supportersHeader}>
-      {runner()}
       <div style={styles.supportersHeaderText}>
         <span style={styles.name}>{nominee.name}</span>{NBSP}is suported by:{NBSP}
       </div>
     </div>
 
     <div style={styles.supportersContainer}>
-      {runner()}
       <div style={styles.supportersList}>
         <ul>
           <li>
@@ -47,17 +42,14 @@ let NomineePage = ({nominee, nominator}) =>
     </div>
 
     <div style={styles.supporterFormHeader}>
-      {runner()}
       <div style={styles.supporterFormHeaderText}>
         Will{NBSP}<span style={styles.name}>you</span>{NBSP}add your support?
       </div>
     </div>
 
     <div style={styles.supporterFormContainer}>
-      {runner()}
       <div style={styles.supporterForm}>
-        <p>Imagine there is a form here! Instead... have a GIF!</p>
-        <img src={willSmith} width='100%'/>
+        <p>Imagine there is a form here!</p>
         <GithubLink/>
       </div>
     </div>
@@ -102,7 +94,7 @@ const whiteRowContents = {
 
 const styles = {
   name: {
-    color: purple,
+    color: pink,
     fontWeight: 'bold',
   },
   container: {

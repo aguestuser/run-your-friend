@@ -2,7 +2,7 @@ import React from 'react';
 import {Field} from 'redux-form';
 import {TextField} from 'redux-form-material-ui';
 import {isRequired, isEmail} from '../services/validations';
-import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
+import {grey, pink} from '../constants/colors';
 
 /* COMPONENTS */
 
@@ -48,7 +48,7 @@ const LongTextFieldOf = ({ name, placeholder, validations }) =>
 /* STYLES */
 
 const margin = 1
-const highlightColor = purple;
+const highlightColor = pink;
 const highlightStyles = {
   hintStyle: { color: grey },
   errorStyle: { color: highlightColor },

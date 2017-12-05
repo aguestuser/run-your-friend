@@ -4,13 +4,15 @@ import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
 import RunnerIcon from './RunnerIcon';
 import PersonFields from './PersonFields';
-import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
+import {grey, pink, buttonColorOf} from '../constants/colors';
 import {generateId} from '../services/generators';
 import {parseNominationPayload} from '../services/parsers';
 import {createNominee} from '../redux/actions/nominees';
 import {createNominator} from '../redux/actions/nominators';
 import {createNomination} from '../redux/actions/nominations';
 import {withRouter} from 'react-router-dom';
+
+/* COMPONENT */
 
 let NominationForm = ({
   handleSubmit,
@@ -63,8 +65,7 @@ let NominationForm = ({
   )
 }
 
-
-const buttonColorOf = disabled => disabled ? grey: purple;
+/* STYLES */
 
 const styles = {
   formContainer: {
@@ -83,6 +84,8 @@ const styles = {
     justifyContent: 'center',
   }
 }
+
+/* EXPORT */
 
 const mapStateToProps = state => ({});
 const actions = {createNominee, createNominator, createNomination};
