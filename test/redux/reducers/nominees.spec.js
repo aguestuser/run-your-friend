@@ -44,6 +44,7 @@ describe('nominees reducer', () => {
       },
       nominations: {
         [nomination0.id]: nomination0,
+      }
     };
 
     it('selects a nominee', () => {
