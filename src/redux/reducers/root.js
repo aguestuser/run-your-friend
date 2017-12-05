@@ -4,6 +4,7 @@ import nominees from './nominees';
 import nominators from './nominators';
 import nominations from './nominations';
 import supporters from './supporters';
+import pledges from './pledges';
 
 export default combineReducers({
   form,
@@ -11,4 +12,5 @@ export default combineReducers({
   nominators,
   nominations,
   supporters,
+  pledges,
 });

@@ -79,3 +79,21 @@ export const supporters = {
   fakeId6: supporter0,
   fakeId7: supporter1,
 };
+
+/* PLEDGES */
+
+export const pledge0 = {
+  id: 'fakeId8',
+  nomineeId: 'fakeId0',
+  supporterId: 'fakeId6',
+};
+export const pledge1 = {
+  id: 'fakeId9',
+  nomineeId: 'fakeId1',
+  supporterId: 'fakeId7',
+};
+
+export const pledges = {
+  fakeId8: pledge0,
+  fakeId9: pledge1,
+};
