@@ -14,9 +14,8 @@ const style = {
   justifyContent: 'center',
   alignItems: 'center',
   width: '100%',
-  padding: '.5em 0 .5em 0',
   color: pink,
-  marginTop: '2em',
+  marginBottom: '1.5em',
 };
 
 export default GithubLink;

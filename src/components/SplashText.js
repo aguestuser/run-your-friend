@@ -4,7 +4,7 @@ import introText from '../text/splash-text.md';
 import './SplashText.css';
 
 const SplashText = () => 
-  <div className="intro-container">
+  <div className="splash-text-container">
     <ReactMarkdown source={introText} />
   </div>;
 

@@ -1,24 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getNominee, getNominator, getBackers} from '../redux/reducers/nominees';
+import RunnerRow from './RunnerRow';
 import SupporterForm from './SupporterForm';
-import Runners from './Runners';
 import GithubLink from './GithubLink';
+import {row, blackRowContents, whiteRowContents} from '../styles/row';
 import {pink} from '../constants/colors';
-import {isEmpty} from 'lodash';
+import {getNominee, getNominator, getBackers} from '../redux/reducers/nominees';
 import {generateId} from '../services/generators';
-import{row, blackRowContents, whiteRowContents} from '../styles/row';
+import {isEmpty} from 'lodash';
 
-const NBSP = '\u00a0';
-const runner = () => <Runners {...{number: 1, height: 4 }}/>
-
-/* <li>
- *   <span style={styles.name}>{nominator.name}</span>{NBSP}({nominator.description}){NBSP}
- * </li>*/
-
+const NBSP = '\u00a0'; // non-breaking space (extract to `src/constants` if needed elsewhere)
 
 let NomineePage = ({nominee, nominator, backers}) =>
   <div style={container}>
+
+    <RunnerRow/>
 
     <div style={row}>
       <div style={blackRowContents}>
@@ -57,6 +53,8 @@ let NomineePage = ({nominee, nominator, backers}) =>
         Will{NBSP}<span style={name}>you</span>{NBSP}add your support?
       </div>
     </div>
+
+   <RunnerRow/>
 
     <div style={row}>
       <div style={whiteRowContents}>

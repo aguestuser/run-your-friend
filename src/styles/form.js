@@ -1,6 +1,7 @@
 export const formContainer = {
   display: 'flex',
   flexDirection: 'column',
+  margin: '3em 0 6em 0',
 };
 
 export const fieldsContainer = {
