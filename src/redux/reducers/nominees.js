@@ -1,4 +1,4 @@
-import {merge, values, find, get} from 'lodash';
+import {merge, values, find, compact, get} from 'lodash';
 import {actionTypes} from '../actions/nominees';
 
 const nominees = (state = {}, action = {}) => {
@@ -10,16 +10,31 @@ const nominees = (state = {}, action = {}) => {
   }
 };
 
-// TODO: it would be better to derrive both of these given a nomination id
-// see unnecessary O(N) operation in `getNominator`
 
 export const getNominee = (state, id) => state.nominees[id];
+
+// TODO: it might be better to derrive nominator and nominee from a nomination id
+// to retrive nominators or in O(1) time instead of O(n)
+
 export const getNominator = (state, nomineeId) => {
   const nominatorId = get(
     find(values(state.nominations), { nomineeId: nomineeId }),
     'nominatorId'
   );
-  return get(state.nominators, nominatorId);
+  return state.nominators[nominatorId]
 };
+
+export const getSupporters = (state, nomineeId) =>
+  compact( // in case we find any null/undefined values
+    values(state.pledges)
+      .filter(pledge => pledge.nomineeId === nomineeId)
+      .map(pledge => state.supporters[pledge.supporterId])
+  );
+
+export const getBackers = (state, nomineeId) =>
+  [
+    getNominator(state, nomineeId),
+    ...getSupporters(state, nomineeId)
+  ]
 
 export default nominees;

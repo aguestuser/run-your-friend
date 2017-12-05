@@ -1,7 +1,16 @@
 import {expect} from 'chai';
 import {actionTypes} from '../../../src/redux/actions/nominees';
-import nominees, {getNominee, getNominator} from '../../../src/redux/reducers/nominees';
-import {nominee0, nominee1, nominator0, nominator1, nomination0} from '../../support/fixtures';
+import nominees, {getNominee, getNominator, getSupporters, getBackers} from '../../../src/redux/reducers/nominees';
+import { nominee0,
+         nominee1,
+         nominator0,
+         nominator1,
+         nomination0,
+         supporter0,
+         supporter1,
+         pledge0,
+         pledge1,
+       } from '../../support/fixtures';
 
 describe('nominees reducer', () => {
 
@@ -44,6 +53,14 @@ describe('nominees reducer', () => {
       },
       nominations: {
         [nomination0.id]: nomination0,
+      },
+      supporters: {
+        [supporter0.id]: supporter0,
+        [supporter1.id]: supporter1,
+      },
+      pledges: {
+        [pledge0.id]: pledge0,
+        [pledge1.id]: pledge1,
       }
     };
 
@@ -51,8 +68,23 @@ describe('nominees reducer', () => {
       expect(getNominee(state, nominee0.id)).to.eql(nominee0);
     });
 
-    it('selects a nominator', () => {
+    it('selects the nominator of a nominee', () => {
       expect(getNominator(state, nominee0.id)).to.eql(nominator0);
+    });
+
+    it('selects supporters of a nominee (incl nominator)', () => {
+      expect(getSupporters(state, nominee0.id)).to.eql([
+        supporter0,
+        supporter1,
+      ]);
+    });
+
+    it('selects all backers (nominator and supporters) of a nominee', () => {
+      expect(getBackers(state, nominee0.id)).to.eql([
+        nominator0,
+        supporter0,
+        supporter1,
+      ]);
     });
   });
 });

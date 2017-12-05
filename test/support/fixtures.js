@@ -68,8 +68,23 @@ export const supporter0 = {
   email: 'roger@riseup.net',
   description: 'I would do statistical analysis.',
 };
+
 export const supporter1 = {
   id: 'fakeId7',
+  name: 'Lew Basnight',
+  email: 'lew@riseup.net',
+  description: 'I would do oppo research work.',
+};
+
+export const supporter2 = {
+  id: 'fakeId8',
+  name: 'Roger Mexico',
+  email: 'roger@riseup.net',
+  description: 'I would do statistical analysis.',
+};
+
+export const supporter3 = {
+  id: 'fakeId9',
   name: 'Lew Basnight',
   email: 'lew@riseup.net',
   description: 'I would do oppo research work.',
@@ -78,22 +93,38 @@ export const supporter1 = {
 export const supporters = {
   fakeId6: supporter0,
   fakeId7: supporter1,
+  fakeId8: supporter0,
+  fakeId9: supporter1,
 };
 
 /* PLEDGES */
 
 export const pledge0 = {
-  id: 'fakeId8',
+  id: 'fakeId10',
   nomineeId: 'fakeId0',
   supporterId: 'fakeId6',
 };
 export const pledge1 = {
-  id: 'fakeId9',
-  nomineeId: 'fakeId1',
+  id: 'fakeId11',
+  nomineeId: 'fakeId0',
   supporterId: 'fakeId7',
 };
 
+export const pledge2 = {
+  id: 'fakeId12',
+  nomineeId: 'fakeId1',
+  supporterId: 'fakeId8',
+};
+
+export const pledge3 = {
+  id: 'fakeId13',
+  nomineeId: 'fakeId1',
+  supporterId: 'fakeId9',
+};
+
 export const pledges = {
-  fakeId8: pledge0,
-  fakeId9: pledge1,
+  fakeId10: pledge0,
+  fakeId11: pledge1,
+  fakeId12: pledge2,
+  fakeId13: pledge3,
 };
