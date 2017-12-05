@@ -27,60 +27,60 @@ let NominationForm = ({
   return (
     <div style={styles.formContainer}>
 
-    <form onSubmit={
-      handleSubmit(values => {
-        const {nominee, nominator, nomination} = (parseNominationPayload(values, generateId));
-        createNominee(nominee);
-        createNominator(nominator);
-        createNomination(nomination);
-        history.push(`/nominees/${nominee.id}`);
-      })
-    }>
+      <form onSubmit={
+        handleSubmit(values => {
+          const {nominee, nominator, nomination} = (parseNominationPayload(values, generateId));
+          createNominee(nominee);
+          createNominator(nominator);
+          createNomination(nomination);
+          history.push(`/nominees/${nominee.id}`);
+        })
+      }>
 
-    <div style={styles.fieldsContainer}>
+        <div style={styles.fieldsContainer}>
 
-      <div style={styles.fields}>
-        <div style={styles.fieldsLabel}>Nominee</div>
-          <div style={styles.firstRowFields}>
-          <TextFieldOf {...{name: 'nomineeName',
-                            placeholder: "Your friend's name",
-                            validations: [isRequired]}}/>
-          <TextFieldOf {...{name: 'nomineeEmail',
-                            placeholder: "Your friend's email",
-                            validations: [isRequired, isEmail]}}/>
+          <div style={styles.fields}>
+            <div style={styles.fieldsLabel}>Nominee</div>
+              <div style={styles.firstRowFields}>
+              <TextFieldOf {...{name: 'nomineeName',
+                                placeholder: "Your friend's name",
+                                validations: [isRequired]}}/>
+              <TextFieldOf {...{name: 'nomineeEmail',
+                                placeholder: "Your friend's email",
+                                validations: [isRequired, isEmail]}}/>
+            </div>
+            <LongTextFieldOf {...{name: 'nomineeDescription',
+                                  placeholder: "Why your friend should run",
+                                  validations: [isRequired]}}/>
+
+          </div> {/*fields*/}
+
+          <div style={styles.fields}>
+            <div style={styles.fieldsLabel}>Nominator</div>
+              <div style={styles.firstRowFields}>
+              <TextFieldOf {...{name: 'nominatorName',
+                                placeholder: "Your name",
+                                validations: [isRequired]}}/>
+              <TextFieldOf {...{name: 'nominatorEmail',
+                                placeholder: "Your email",
+                                validations: [isRequired, isEmail]}}/>
+            </div>
+            <LongTextFieldOf {...{name: 'nominatorDescription',
+                                  placeholder: "How you would help your friend run",
+                                  validations: [isRequired]}}/>
+          </div> {/*fields*/}
+
+        </div> {/*fieldsContainer*/}
+
+        <div style={styles.submitContainer}>
+          <FlatButton {...{ label: 'Run!',
+                            type: 'submit',
+                            style: { color: buttonColorOf(disabled) },
+                            icon: <RunnerIcon {...{color: buttonColorOf(disabled) }}/>,
+                            disabled }} />
         </div>
-        <LongTextFieldOf {...{name: 'nomineeDescription',
-                              placeholder: "Why your friend should run",
-                              validations: [isRequired]}}/>
 
-      </div> {/*fields*/}
-
-      <div style={styles.fields}>
-        <div style={styles.fieldsLabel}>Nominator</div>
-          <div style={styles.firstRowFields}>
-          <TextFieldOf {...{name: 'nominatorName',
-                            placeholder: "Your name",
-                            validations: [isRequired]}}/>
-          <TextFieldOf {...{name: 'nominatorEmail',
-                            placeholder: "Your email",
-                            validations: [isRequired, isEmail]}}/>
-        </div>
-        <LongTextFieldOf {...{name: 'nominatorDescription',
-                              placeholder: "How you would help your friend run",
-                              validations: [isRequired]}}/>
-      </div> {/*fields*/}
-
-    </div> {/*fieldsContainer*/}
-
-    <div style={styles.submitContainer}>
-    <FlatButton {...{ label: 'Run!',
-                      type: 'submit',
-                      style: { color: buttonColorOf(disabled) },
-                      icon: <RunnerIcon {...{color: buttonColorOf(disabled) }}/>,
-                      disabled }} />
-    </div>
-
-    </form>
+      </form>
 
     </div>
   )
