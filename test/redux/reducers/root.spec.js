@@ -9,6 +9,7 @@ describe('root reducer', () => {
       nominees:    {},
       nominators:  {},
       nominations: {},
+      supporters:  {},
     });
   });
 });

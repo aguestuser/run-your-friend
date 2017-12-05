@@ -60,3 +60,22 @@ export const nominations = {
   fakeId5: nomination1,
 };
 
+/* SUPPORTERS */
+
+export const supporter0 = {
+  id: 'fakeId6',
+  name: 'Roger Mexico',
+  email: 'roger@riseup.net',
+  description: 'I would do statistical analysis.',
+};
+export const supporter1 = {
+  id: 'fakeId7',
+  name: 'Lew Basnight',
+  email: 'lew@riseup.net',
+  description: 'I would do oppo research work.',
+};
+
+export const supporters = {
+  fakeId6: supporter0,
+  fakeId7: supporter1,
+};
