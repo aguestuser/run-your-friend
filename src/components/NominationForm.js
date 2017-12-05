@@ -1,11 +1,10 @@
 import React from 'react';
-import {Field, reduxForm} from 'redux-form';
-import {TextField} from 'redux-form-material-ui';
+import {reduxForm} from 'redux-form';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
 import RunnerIcon from './RunnerIcon';
+import PersonFields from './PersonFields';
 import {grey500 as grey, purpleA200 as purple} from 'material-ui/styles/colors';
-import {isRequired, isEmail} from '../services/validations';
 import {generateId} from '../services/generators';
 import {parseNominationPayload} from '../services/parsers';
 import {createNominee} from '../redux/actions/nominees';
@@ -38,39 +37,17 @@ let NominationForm = ({
       }>
 
         <div style={styles.fieldsContainer}>
-
-          <div style={styles.fields}>
-            <div style={styles.fieldsLabel}>Nominee</div>
-              <div style={styles.firstRowFields}>
-              <TextFieldOf {...{name: 'nomineeName',
-                                placeholder: "Your friend's name",
-                                validations: [isRequired]}}/>
-              <TextFieldOf {...{name: 'nomineeEmail',
-                                placeholder: "Your friend's email",
-                                validations: [isRequired, isEmail]}}/>
-            </div>
-            <LongTextFieldOf {...{name: 'nomineeDescription',
-                                  placeholder: "Why your friend should run",
-                                  validations: [isRequired]}}/>
-
-          </div> {/*fields*/}
-
-          <div style={styles.fields}>
-            <div style={styles.fieldsLabel}>Nominator</div>
-              <div style={styles.firstRowFields}>
-              <TextFieldOf {...{name: 'nominatorName',
-                                placeholder: "Your name",
-                                validations: [isRequired]}}/>
-              <TextFieldOf {...{name: 'nominatorEmail',
-                                placeholder: "Your email",
-                                validations: [isRequired, isEmail]}}/>
-            </div>
-            <LongTextFieldOf {...{name: 'nominatorDescription',
-                                  placeholder: "How you would help your friend run",
-                                  validations: [isRequired]}}/>
-          </div> {/*fields*/}
-
-        </div> {/*fieldsContainer*/}
+           <PersonFields{...{
+             name:        { name: "nomineeName",        placeholder: "Your friend's name" },
+             email:       { name: "nomineeEmail",       placeholder: "Your friend's email" },
+             description: { name: "nomineeDescription", placeholder: "Why your friend should run" }
+           }}/>
+           <PersonFields{...{
+             name:        { name: "nominatorName",        placeholder: "Your name" },
+             email:       { name: "nominatorEmail",       placeholder: "Your email" },
+             description: { name: "nominatorDescription", placeholder: "How you would help your frien run" }
+           }}/>
+        </div>
 
         <div style={styles.submitContainer}>
           <FlatButton {...{ label: 'Run!',
@@ -89,17 +66,6 @@ let NominationForm = ({
 
 const buttonColorOf = disabled => disabled ? grey: purple;
 
-const margin = 1
-const highlightColor = purple;
-const highlightStyles = {
-  hintStyle: { color: grey },
-  errorStyle: { color: highlightColor },
-  underlineStyle: { borderColor: highlightColor },
-  underlineFocusStyle: { borderColor: highlightColor },
-  floatingLabelStyle: { color: grey },
-  floatingLabelFocusStyle: { color: highlightColor},
-};
-
 const styles = {
   formContainer: {
     display: 'flex',
@@ -111,57 +77,12 @@ const styles = {
     justifyContent: 'center',
     flexWrap: 'wrap',
   },
-  fieldsLabel: {
-    display: 'flex',
-    alignSelf: 'center',
-    fontWeight: 'bold',
-  },
-  fields: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  firstRowFields: {
-    display: 'flex',
-    alignContents: 'flex-start',
-    flexWrap: 'wrap',
-  },
-  field: {
-    margin: `${margin}rem`,
-  },
-  wideField: {
-    position: 'relative',
-    width: `calc(100% - ${2*margin}rem)`,
-  },
   submitContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
   }
 }
-
-const TextFieldOf = ({ name, placeholder, validations }) =>
-  <Field {...{
-    ...highlightStyles,
-    name,
-    component: TextField,
-    hintText: placeholder,
-    floatingLabelText: placeholder,
-    validate: validations || [],
-    style: styles.field,
-  }}/>
-
-const LongTextFieldOf = ({ name, placeholder, validations }) =>
-  <Field {...{
-    ...highlightStyles,
-    name,
-    component: TextField,
-    hintText: placeholder,
-    floatingLabelText: placeholder,
-    validate: validations || [],
-    multiLine: true,
-    style: {...styles.field, ...styles.wideField }
-  }}/>
-
 
 const mapStateToProps = state => ({});
 const actions = {createNominee, createNominator, createNomination};
