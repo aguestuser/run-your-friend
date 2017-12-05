@@ -7,6 +7,7 @@ import GithubLink from './GithubLink';
 import {pink} from '../constants/colors';
 import {isEmpty} from 'lodash';
 import {generateId} from '../services/generators';
+import{row, blackRowContents, whiteRowContents} from '../styles/row';
 
 const NBSP = '\u00a0';
 const runner = () => <Runners {...{number: 1, height: 4 }}/>
@@ -63,55 +64,13 @@ let NomineePage = ({nominee, nominator, backers}) =>
       </div>
     </div>
 
-    <div style={bottomRow}>
-      <div style={{...blackRowContents, fontWeight: 'normal'}}>
-        <GithubLink/>
-      </div>
-    </div>
+    <GithubLink/>
     
   </div>;
         
 
 
 // styles
-
-const row = {
-  display: 'flex',
-  flexDirection: 'row',
-}
-
-const bottomRow = {
-  position: 'absolute',
-  bottom: 0,
-  width: '100%',
-}
-
-const rowContents = {
-  display: 'flex',
-  width: '100%',
-  height: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  alignSelf: 'center',
-  flexWrap: 'wrap',
-  marginLeft: '-1em',
-}
-
-const blackRowContents = {
-  ...rowContents,
-  color: 'white',
-  backgroundColor: 'black',
-  fontSize: '1.2em',
-  fontWeight: 'bold',
-  paddingBottom: '.2em',
-  paddingLeft: '.2em',
-  textAlign: 'center',
-}
-
-const whiteRowContents = {
-  ...rowContents,
-  fontSize: '.8em',
-}
 
 const name = {
   color: pink,
@@ -122,6 +81,7 @@ const container= {
   display: 'flex',
   flexDirection: 'column',
   flexWrap: 'wrap',
+  marginTop: '.6em',
 };
 
 /* EXPORT */

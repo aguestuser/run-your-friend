@@ -3,16 +3,15 @@ import SplashText from './SplashText';
 import NominationForm from './NominationForm';
 import Runners from './Runners';
 import GithubLink from './GithubLink';
+import {row, blackRowContents} from '../styles/row';
 
 const NUM_RUNNERS = 10;
 const RUNNER_HEIGHT = 8;
 
 const SplashPage = () =>
-  <div>
-    <Runners {...{number: NUM_RUNNERS, height: RUNNER_HEIGHT }}/>
+  <div style={{marginTop: '-1.3em'}}>
     <SplashText/>
     <NominationForm/>
-    <Runners {...{number: NUM_RUNNERS, height: RUNNER_HEIGHT }}/>
     <GithubLink/>
   </div>;
 
