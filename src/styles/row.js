@@ -11,7 +11,7 @@ export const rowContents = {
   alignItems: 'center',
   alignSelf: 'center',
   flexWrap: 'wrap',
-  padding: '.5em',
+  padding: '.5em 0 .5em 0',
 };
 
 export const blackRowContents = {
@@ -26,7 +26,7 @@ export const blackRowContents = {
 export const whiteRowContents = {
   ...rowContents,
   fontSize: '.8em',
-  padding: '2em'
+  padding: '2em 0 2em 0'
 };
 
 export default {

@@ -3,11 +3,13 @@ import {connect} from 'react-redux';
 import RunnerRow from './RunnerRow';
 import SupporterForm from './SupporterForm';
 import GithubLink from './GithubLink';
+import ShareIcons from './ShareIcons';
 import {row, blackRowContents, whiteRowContents} from '../styles/row';
 import {pink} from '../constants/colors';
 import {getNominee, getNominator, getBackers} from '../redux/reducers/nominees';
 import {generateId} from '../services/generators';
 import {isEmpty} from 'lodash';
+
 
 const NBSP = '\u00a0'; // non-breaking space (extract to `src/constants` if needed elsewhere)
 
@@ -20,7 +22,7 @@ let NomineePage = ({nominee, nominator, backers}) =>
       <div style={blackRowContents}>
         <span style={name}>{nominator.name}</span>
         {NBSP}thinks{NBSP}
-        <span style={name}>{nominee.name }</span> {NBSP}should run because:
+        <span style={name}>{nominee.name }</span> {NBSP}should run for office because:
       </div>
     </div>
 
@@ -61,6 +63,11 @@ let NomineePage = ({nominee, nominator, backers}) =>
         <SupporterForm{...{ nominee } }/>
       </div>
     </div>
+
+    <ShareIcons {...{
+      url:'http://pynchonwiki.com',
+      quote: `Help ${nominee.name} run for office! They'd be great because: ${nominee.description}`,
+    }}/>
 
     <GithubLink/>
     
