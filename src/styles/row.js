@@ -25,7 +25,7 @@ export const blackRowContents = {
 
 export const whiteRowContents = {
   ...rowContents,
-  fontSize: '.8em',
+  fontSize: '1em',
   paddingTop: '2em',
   paddingBottom: '2em',
 };
