@@ -8,6 +8,7 @@ import {row, blackRowContents, whiteRowContents} from '../styles/row';
 import {pink} from '../constants/colors';
 import {getNominee, getNominator, getBackers} from '../redux/reducers/nominees';
 import {generateId} from '../services/generators';
+import {baseUrl} from '../constants/network';
 import {isEmpty} from 'lodash';
 
 
@@ -65,7 +66,7 @@ let NomineePage = ({nominee, nominator, backers}) =>
     </div>
 
     <ShareIcons {...{
-      url:'http://pynchonwiki.com',
+      url: `${baseUrl}/nominees/${nominee.id}`,
       quote: `Help ${nominee.name} run for office! They'd be great because: ${nominee.description}`,
     }}/>
 
